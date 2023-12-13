@@ -52,7 +52,7 @@ Feel free to get in touch with us.
 Nowlari, Magam, Kashmir
 
 **Email:**
-[support@dreamersmovement.org](mailto:support@dreamersmovement.org)
+[support@dreamersmovement.org](mailto:support@dreamersmovement.com)
 
 
-© 2021-2022 [Dreamersmovement.org](https://dreamersmovement.org)
+© 2021-2022 [Dreamersmovement.org](https://dreamersmovement.com)
