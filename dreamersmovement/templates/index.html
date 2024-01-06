@@ -5,10 +5,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Landing Page With Light/Dark Mode</title>
+    <title>Dreamers Movement</title>
     <link rel="stylesheet" href="{% static "style.css" %}" />
+    <link rel="stylesheet" href="{% static "style-s.css" %}" />
+    <link rel="stylesheet" href="{% static "style-c.css" %}" />
+    <link rel="stylesheet" href="{% static "style-f.css" %}" />
+    <link rel="stylesheet" href="{% static "style-p.css" %}" />
+    <link rel="stylesheet" href="{% static "style-pr.css" %}" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
+    <div class="lds-ring" id="lds-ring"><div></div><div></div><div></div><div></div></div>
     <main>
       <div class="big-wrapper light">
         <img src="{% static "shape.png" %}" alt="" class="shape" />
@@ -22,11 +29,15 @@
 
             <div class="links">
               <ul>
-                <li><a href="#">About</a></li>
+                <li><a href="#footer">About</a></li>
                 <li><a href="#">Exams</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Contact US</a></li>
-                <li><a href="#" class="btn">Sign up</a></li>
+                <li><a href="#container-p">Projects</a></li>
+                <li><a href="#container-c">Contact US</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="logout" class="btn">logout</a></li>
+                {% else %}
+                <li><a href="login" class="btn">login</a></li>
+                {% endif %}
               </ul>
             </div>
 
@@ -70,9 +81,327 @@ Elevate your potential with Dreamers Movemet, where mentorship thrives. Connect 
       </div>
     </main>
 
+{% comment %} -----our Team------------ {% endcomment %}
+
+  <section id="team" data-aos="zoom-in">
+      <h1 class="heading">
+          <i class="fas fa-rocket"></i><strong>Our Team</strong>
+      </h1>
+      <div class="container-s">
+          <div class="box">
+              <div class="top-bar"></div>
+                  <div class="nav">
+                      <i class="verify fas fa-check-circle"></i>
+                      <input type="checkbox" class="heart-btn" id="heart-btn">
+                      <label  class="heart"></label>
+                  </div>
+
+                  <div class="details">
+                      <img src="{% static "team1.jpg" %}" alt="">
+                      <strong>Emma Olivia</strong>
+                      <p>Emmaolivia@gmail.com</p>
+                  </div>
+
+                  <div class="btn-s">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#"><i class="fab fa-youtube"></i></a>
+                  </div>
+              </div>
+          <div class="box">
+              <div class="top-bar"></div>
+                  <div class="nav">
+                      <i class="verify fas fa-check-circle"></i>
+                      <input type="checkbox" class="heart-btn" id="heart-btn">
+                      <label  class="heart"></label>
+                  </div>
+
+                  <div class="details">
+                      <img src="{% static "team2.jpg" %}" alt="">
+                      <strong>Sofia Adward</strong>
+                      <p>Sofiaadward@gmail.com</p>
+                  </div>
+
+                  <div class="btn-s">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#"><i class="fab fa-youtube"></i></a>
+                  </div>
+              </div>
+          <div class="box">
+              <div class="top-bar"></div>
+                  <div class="nav">
+                      <i class="verify fas fa-check-circle"></i>
+                      <input type="checkbox" class="heart-btn" id="heart-btn">
+                      <label  class="heart"></label>
+                  </div>
+
+                  <div class="details">
+                      <img src="{% static "team3.jpg" %}" alt="">
+                      <strong>Touseeq Ijaz</strong>
+                      <p>Touseeqijaz@gmail.com</p>
+                  </div>
+
+                  <div class="btn-s">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#"><i class="fab fa-youtube"></i></a>
+                  </div>
+                </div>
+          <div class="box">
+              <div class="top-bar"></div>
+                  <div class="nav">
+                      <i class="verify fas fa-check-circle"></i>
+                      <input type="checkbox" class="heart-btn" id="heart-btn">
+                      <label  class="heart"></label>
+                  </div>
+
+                  <div class="details">
+                      <img src="{% static "team4.jpg" %}" alt="">
+                      <strong>Amelia Alex</strong>
+                      <p>Ameliaalex@gmail.com</p>
+                  </div>
+
+                  <div class="btn-s">
+                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#"><i class="fab fa-youtube"></i></a>
+                  </div>
+              
+          </div>
+      </div>
+  </section>
+
+
+  {% comment %} -------contact us-----------------{% endcomment %}
+
+
+  <div class="container-c" id="container-c" data-aos="zoom-in">
+    <span class="big-circle"></span>
+    <img src="{% static "shape.png" %}" class="square" alt="" />
+    <div class="form">
+      <div class="contact-info">
+        <h3 class="title">Let's get in touch</h3>
+        <p class="text-c">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+          dolorum adipisci recusandae praesentium dicta!
+        </p>
+
+        <div class="info">
+          <div class="information">
+            <img src="{% static "location.png" %}" class="icon" alt="" />
+            <p>92 Cherry Drive Uniondale, NY 11553</p>
+          </div>
+          <div class="information">
+            <img src="{% static "email.png" %}" class="icon" alt="" />
+            <p>lorem@ipsum.com</p>
+          </div>
+          <div class="information">
+            <img src="{% static "phone.png" %}" class="icon" alt="" />
+            <p>123-456-789</p>
+          </div>
+        </div>
+
+        <div class="social-media">
+          <p>Connect with us :</p>
+          <div class="social-icons">
+            <a href="#">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <span class="circle one"></span>
+        <span class="circle two"></span>
+
+        <form action="/" autocomplete="off" method="POST">
+          {% csrf_token %}
+          <h3 class="title">Contact us</h3>
+          <div class="input-container">
+            <input type="text" name="name-c" class="input" required/>
+            <label for="">Name</label>
+            <span>Name</span>
+          </div>
+          <div class="input-container">
+            <input type="email" name="email-c" class="input" required />
+            <label for="">Email</label>
+            <span>Email</span>
+          </div>
+          <div class="input-container">
+            <input type="tel" name="phone-c" class="input" required />
+            <label for="">Phone</label>
+            <span>Phone</span>
+          </div>
+          <div class="input-container textarea">
+            <textarea name="message-c" class="input" required></textarea>
+            <label for="">Message</label>
+            <span>Message</span>
+          </div>
+          <input type="submit" value="Submit" class="btn-c" />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static "app-c.js" %}"></script>
+  {% comment %} -----our projects----- {% endcomment %}
+
+  <div class="container-p" id="container-p" data-aos="zoom-in">
+    <div class="our-projects">
+        <h1 id="h1-o">On Going Projects</h1>
+        <h3>Project DroneX: Build Your Drone from Scratch to the Skies</h3>
+        <p>Are you a student eager to explore the world of drones and seeking hands-on experience with Arduino, Raspberry Pi, and programming? DroneX Workshop is your gateway to the exciting world of technology!<br>
+            <br>
+
+            Workshop Details:<br>
+            <br>
+            
+            
+            🔌 You are studying in class 8th-10th<br>
+            🛠 Build your very own drone from scratch<br>
+            🌐 Learn how to use Arduino and Raspberry Pi<br>
+            💻 Learn how to control the drone using Python programming language<br>
+            🤝 Team up and track your progress<br>
+            <br>
+            What We Provide:<br>
+            
+            
+            💡 We will provide you with every resource you need.<br>
+            🚌 Travelling Allowance<br>
+            🏆 Certificate of Completion and Exciting Prizes at the end<br>
+            <br>
+            Note: A maximum of five students will be selected.<br>
+            <br>
+            
+            Additional Information:<br>
+            <br>
+            
+            📅 Date: from 05 November 2023, Every Sunday<br>
+            🕒 Time: Details will be communicated to selected students.<br>
+            🏫 Location: Nowlari<br>
+            ✉️ Contact: contact@dreamersinstitute.com<br>
+            📞 Contact(WhatsApp): +91 7889704442<br>
+            
+            
+            Please submit your application using the form provided.</p>
+            <img src="{% static "drone.jpg" %}" alt="" id="imgdrone">
+    </div>
+    <div class="join-project">
+        <h1>Welcome To DreamU Projects</h1>
+        <p>You are in the right place, if you are a student who enjoys creativity and challenges. Enroll in our
+            ongoing projects to begin an exciting journey of experiential and hands-on learning. We are more than
+            just your typical classroom but a platform for your aspirations. Enroll in our DreamU program to immerse
+            yourself in a world of exciting projects that will ignite your imagination and inspire humanity.
+        </p>
+        <form action="" class="form-p" method="POST">
+          {% csrf_token %}
+            <h2>Want To Join !</h2>
+            <input type="text" name="name" id="name-f" placeholder="Name" required>
+            <input type="text" name="class" id="class-f" placeholder="Class" required>
+            <input type="number" name="number" id="number-f" placeholder="Number" required>
+            <input type="email" name="email" id="email-f" placeholder="Email" required>
+            <input type="submit" value="Submit" id="submit">
+
+        </form>
+    </div>
+</div>
+
+
+
+  {% comment %} -----footer---- {% endcomment %}
+
+  <footer class="footer-distributed" id="footer" data-aos="zoom-in">
+
+    <div class="footer-left">
+        <h3>Dreamers<span>Movement</span></h3>
+
+        <p class="footer-links">
+            <a href="#">Home</a>
+            |
+            <a href="#">About</a>
+            |
+            <a href="#">Contact</a>
+            |
+            <a href="#">Blog</a>
+        </p>
+
+        <p class="footer-company-name">Copyright © 2023 <strong>Dreamers Movement</strong> All rights reserved</p>
+    </div>
+
+    <div class="footer-center">
+        <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Magam</span>
+                J&k</p>
+        </div>
+
+        <div>
+            <i class="fa fa-phone"></i>
+            <p>+91 7889484343</p>
+        </div>
+        <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="#">xyz@gmail.com</a></p>
+        </div>
+    </div>
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>About the company</span>
+            <strong>Dreamers Movement</strong> is a Youtube channel where you can find more creative CSS Animations
+            and
+            Effects along with
+            HTML, JavaScript and Projects using C/C++.
+        </p>
+        <div class="footer-icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+        </div>
+    </div>
+</footer>
     <!-- JavaScript Files -->
+
+
+
 
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <script src="{% static "app.js" %}"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    // This function will be executed when the DOM is fully loaded
+
+    // Simulate the loading process (you can replace this with your actual loading logic)
+    setTimeout(function () {
+        document.getElementById("lds-ring").style.display = "none";
+        // document.getElementsByClassName("lds-ring div").style.display = "none";
+        // Display or initialize your ChatGPT content here
+    }, 5000); // Adjust the timeout duration as needed
+    });
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 50,
+        duration: 500,
+      });
+    </script>
   </body>
 </html>
