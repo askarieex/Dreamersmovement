@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>verification</title>
+    <style>
+      form{
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 400px;
+        /* margin-left: 40vw;*/
+        margin-top: 25vh;
+        padding: 2vw 4vw;
+        border-radius: 10px;
+        text-align: center;
+      }
+      div{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items:center;
+      }
+    </style>
+</head>
+<body>
+  <div>
+    <form method="POST" action="/vr">
+      {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">verification code has been sent to you gmail</label>
+          <input type="number" class="form-control" name="code" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter code" required>
+          <small style="color: red;">{{vrcodeerror}}</small>
+        </div>
+        <input type="submit">
+      </form>
+    </div>
+</body>
+</html>

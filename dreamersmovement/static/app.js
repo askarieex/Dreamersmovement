@@ -45,6 +45,17 @@ function events() {
   toggle_btn.addEventListener("click", toggleAnimation);
   hamburger_menu.addEventListener("click", () => {
     big_wrapper.classList.toggle("active");
+    if(big_wrapper.className.includes("active")){
+    hamburger_menu.style.position = "fixed"
+    hamburger_menu.style.right = "48px"
+    }else{
+      hamburger_menu.style.position = ""
+      hamburger_menu.style.right = ""
+    }
+    // hamburger_menu.style.position = "fixed"
+
+
+
   });
 }
 
