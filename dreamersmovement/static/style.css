@@ -399,4 +399,7 @@ header .container {
   .logo h3{
     font-size: 1rem;
   }
+  .big-wrapper{
+    padding-top: 0rem;
+  }
 }
