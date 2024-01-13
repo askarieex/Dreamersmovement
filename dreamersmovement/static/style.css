@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+body{
+  background-color: #f7f7f7;
+}
 
 html{
 
   scroll-behavior: smooth;
 }
-.dark {
+.light {
   --mainColor: #64bcf4;
   --hoverColor: #5bacdf;
   --backgroundColor: #f1f8fc;
@@ -15,7 +18,7 @@ html{
   --lightTwo: #aaa;
 }
 
-.light{
+.dark{
   --mainColor: #64bcf4;
   --hoverColor: #5bacdf;
   --backgroundColor: #192e3a;
@@ -99,6 +102,27 @@ header .container {
   margin-top: 0rem;
 }
 
+.heading {
+  font-size: 1.3rem;
+  color: #2c2c2c;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.heading i{
+  background-color: #333;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  margin: 0 20px;
+}
+
 .logo h3 {
   color: var(--darkTwo);
   font-size: 1.55rem;
@@ -120,23 +144,24 @@ header .container {
 }
 
 .links a:hover {
-  color: var(--hoverColor);
+  color:#2b5065 !important;
   transform: scale(1.05);
 }
 
 .btn {
   display: inline-block;
-  padding: 0.9rem 1.9rem;
-  color: #fff !important;
-  background-color: var(--mainColor);
-  border-radius: 16px;
+  padding: 0.7rem 1.7rem;
+  color:#192e3a !important; 
+  background-color: white;
+  border-radius: 10px;
   text-transform: capitalize;
   transition: 0.3s;
 }
 
 .btn:hover {
-  background-color: var(--hoverColor);
-  transform: scale(1) !important;
+  background-color: white;
+  color:#396884 !important;
+  transform: scale(1.05) !important;
 }
 
 .hamburger-menu {

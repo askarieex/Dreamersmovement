@@ -1,0 +1,121 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@800&family=Baloo+Bhai+2&family=Bebas+Neue&family=DM+Sans:opsz@9..40&family=Roboto:wght@500&display=swap');
+
+
+  body{
+    font-family: 'Roboto', sans-serif;
+  }
+.all-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin: 3vw 3vw;
+    text-align: center;
+}
+.all-header{
+    font-size: 35px;
+    padding-top: 3vw;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    color: #312f3a;
+    letter-spacing: 2px;
+}
+
+.founders-section{
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+.profile{
+    display: flex;
+    border-radius: 3px;
+    border: 1px solid #a1b7fd;
+    width: 600px;
+    height: 200px;
+    background-color: white;
+    /* margin: 4vw 4vw; */
+
+}
+
+.profile img{
+    width:27%;
+    height: 80%;
+    margin: 1.2vw 2vw;
+    border-radius: 200px;
+    border: 5px solid #84a1ff;
+}
+
+.info-header{
+    color: #602ef4;
+    font-weight: 700;
+    margin-top: 1vw;
+}
+@media screen and (max-width: 1360px){
+    .founders-section{
+    flex-direction: column;
+    padding-left: 40px;
+    padding-right: 40px;
+    }
+    .profile{
+        width: 800px;
+        margin-bottom: 4vw;
+    }
+    .profile img{
+        width: 20%;
+    }
+}
+@media screen and (max-width: 470px){
+    .all-header{
+        font-size: 20px;
+    }
+    .all-container p{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 810px){
+    .profile{
+        width: 580px;
+    }
+    .profile img{
+        width: 27%;
+    }
+}
+
+@media screen and (max-width: 586px){
+    .profile{
+        width: 470px;
+    }
+    .profile img{
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .profile{
+        width: 380px;
+        height: 150px;
+    }
+    .profile img{
+        width: 33%;
+        height: 83%;
+    }
+}
+
+@media screen and (max-width: 380px){
+    .profile{
+        width: 330px;
+        height: 130px;
+    }
+    .profile img{
+        width: 30%;
+        height: 83%;
+    }
+}
+

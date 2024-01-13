@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect
-from .models import contact,joiners
+from .models import contact,joiners,donaters
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 import random
 from django.contrib.auth import authenticate, login as user_login, logout as user_logout
+import razorpay
 
 # Create your views here.
 vrcode = None
@@ -111,3 +112,72 @@ def vr(request):
 def logout(request):
     user_logout(request)
     return redirect('/')
+
+
+
+def donate(request):
+    if not request.user.is_authenticated:
+        return redirect('/')
+    if request.method == 'POST':
+        global named,addressd,amountd,payment
+        named = request.POST['named']
+        addressd = request.POST['addressd']
+        amountd = request.POST['amountd']
+        client = razorpay.Client(auth=("rzp_test_RkzDSuQFA1u5aO", "POhTCz7Vv93f27YrMRzsyqwR"))
+        data = { "amount": int(amountd) *100, "currency": "INR" ,'payment_capture':1 }
+        payment = client.order.create(data=data) 
+        print(payment)
+        return render(request, 'index-d.html', {'payment':payment})   
+    return render(request,'index-d.html')
+
+def success(request):
+    global payment,user
+    if not request.user.is_authenticated:
+        return redirect('/')
+    if request.method == 'GET':
+        if not request.GET.get('razorpay_payment_id'):
+            return redirect('/')
+        if not request.GET.get('razorpay_order_id'):
+            return redirect('/')
+        if not request.GET.get('razorpay_signature'):
+            return redirect('/')
+        if not request.GET.get('razorpay_order_id') == payment['id']:
+            return redirect('/')
+        razorpay_payment_id = request.GET.get('razorpay_payment_id')
+        razorpay_order_id = request.GET.get('razorpay_order_id')
+        razorpay_signature = request.GET.get('razorpay_signature')
+
+        donater = donaters(named = named,addressd=addressd,amountd=amountd, emaild = request.user.email, order_id=razorpay_order_id,payment_id=razorpay_payment_id,payment_signature=razorpay_signature)
+
+        donater.save()
+        subject = 'Heartfelt Gratitude for Your Generosity'
+        message = f"""
+        Subject: Heartfelt Gratitude for Your Generosity 💖
+
+        Dear {request.user.username},
+
+        I hope this message finds you well. We are thrilled and deeply grateful for your recent donation to [Organization/cause]. Your generosity is a shining beacon of support, and we cannot express how much it means to us.
+
+        **Donation Details:**
+        - **Amount:** [{amountd}]
+        - **Payment ID:** [{razorpay_payment_id}]
+
+        Your commitment to [describe the cause or initiative] is truly inspiring. With contributions like yours, we can continue [explain the impact of donations and how they contribute to the organization's mission].
+
+        As a token of our appreciation, please find attached a [certificate/thank-you note] expressing our gratitude. Your name will also be featured prominently in our list of esteemed donors, recognizing the incredible difference you're making.
+
+        **Next Steps:**
+        Kindly check your email for a detailed receipt containing your payment ID and other relevant information. If you have any questions or require further assistance, feel free to reply to this email or contact us at [7889484343].
+
+        Once again, thank you for your unwavering support. Together, we are creating positive change and making the world a better place.
+
+        With sincere thanks,
+
+        [Dreamers Movement]
+        [7889484343]
+        """
+
+        from_email = 'mohammadhadimalik@gmail.com'
+        recipient_list = [request.user.email]
+        send_mail(subject, message, from_email, recipient_list)
+        return render(request, 'success.html')

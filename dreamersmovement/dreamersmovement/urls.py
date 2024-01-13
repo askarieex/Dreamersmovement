@@ -23,5 +23,7 @@ urlpatterns = [
     path('', views.Home, name='Home'),
     path('login', views.Login, name="login"),
     path('vr', views.vr, name='vr'),
-    path('logout', views.logout,name='logout')
+    path('logout', views.logout,name='logout'),
+    path('donate', views.donate, name='donate'),
+    path('success/', views.success, name='success')
 ]
